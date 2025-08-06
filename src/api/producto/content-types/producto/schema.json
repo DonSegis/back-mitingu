@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "productos",
+  "info": {
+    "singularName": "producto",
+    "pluralName": "productos",
+    "displayName": "Producto",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "precio": {
+      "type": "decimal"
+    },
+    "stock": {
+      "type": "integer"
+    },
+    "imagen": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "activo": {
+      "type": "boolean"
+    },
+    "carrito_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::carrito-item.carrito-item",
+      "mappedBy": "producto"
+    },
+    "categoria": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria.categoria",
+      "inversedBy": "productos"
+    },
+    "pedido_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pedido-item.pedido-item",
+      "mappedBy": "producto"
+    },
+    "descripcion_corta": {
+      "type": "string"
+    },
+    "imagen_link": {
+      "type": "text"
+    },
+    "codigo_barra": {
+      "type": "text",
+      "unique": true
+    },
+    "costo": {
+      "type": "biginteger"
+    }
+  }
+}

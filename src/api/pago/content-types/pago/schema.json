@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pagos",
+  "info": {
+    "singularName": "pago",
+    "pluralName": "pagos",
+    "displayName": "Pago",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "metodo_pago": {
+      "type": "enumeration",
+      "enum": [
+        "Debito",
+        "Crédito",
+        "Efectivo"
+      ]
+    },
+    "monto": {
+      "type": "decimal"
+    },
+    "referencia": {
+      "type": "text"
+    },
+    "fecha": {
+      "type": "datetime"
+    },
+    "pedido": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pedido.pedido",
+      "inversedBy": "pago"
+    },
+    "nro_boleta": {
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    "lugar_pago": {
+      "type": "enumeration",
+      "enum": [
+        "Web",
+        "Local"
+      ],
+      "required": true
+    }
+  }
+}

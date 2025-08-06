@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pago_links",
+  "info": {
+    "singularName": "pago-link",
+    "pluralName": "pago-links",
+    "displayName": "Pago_link"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "token": {
+      "type": "uid"
+    },
+    "pedido": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pedido.pedido",
+      "inversedBy": "pago_link"
+    },
+    "usado": {
+      "type": "boolean",
+      "default": false
+    },
+    "expira_en": {
+      "type": "date"
+    }
+  }
+}

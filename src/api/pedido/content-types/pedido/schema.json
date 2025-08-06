@@ -1,0 +1,106 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pedidos",
+  "info": {
+    "singularName": "pedido",
+    "pluralName": "pedidos",
+    "displayName": "Pedido",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "total": {
+      "type": "decimal"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "pendiente",
+        "pagado",
+        "enviado",
+        "cancelado",
+        "entregado",
+        "retirado",
+        "rechazado"
+      ]
+    },
+    "metodo_pago": {
+      "type": "enumeration",
+      "enum": [
+        "debito",
+        "credito",
+        "transferencia",
+        "efectivo",
+        "sodexo",
+        "pago_tienda"
+      ]
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "pedidos"
+    },
+    "pedido_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pedido-item.pedido-item",
+      "mappedBy": "pedido"
+    },
+    "pago": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pago.pago",
+      "mappedBy": "pedido"
+    },
+    "nombre_usuario": {
+      "type": "string"
+    },
+    "email_usuario": {
+      "type": "email"
+    },
+    "direccion_usuario": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "codigo_pedido": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "pago_link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pago-link.pago-link",
+      "mappedBy": "pedido"
+    },
+    "comprobante_tranferencia": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "entrgado": {
+      "type": "boolean",
+      "default": false
+    },
+    "transferencia": {
+      "type": "boolean",
+      "default": false
+    },
+    "donde_se_genero": {
+      "type": "enumeration",
+      "enum": ["web", "local"]
+    },
+    "baucher": {
+      "type": "string"
+    }
+  }
+}
