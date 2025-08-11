@@ -58,6 +58,8 @@ module.exports = [
           "connect-src": [
             "'self'",
             "https://e-commerce-mitingu-production.up.railway.app",
+            "https://e-commerce-mitingu-production-3407.up.railway.app",
+            "https://e-commerce-landing-page-backend-production-942c.up.railway.app/",
             "http://localhost:1420",
             "ws://localhost:1337",
             " http://localhost:5173/",

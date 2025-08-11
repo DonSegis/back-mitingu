@@ -14,7 +14,7 @@ module.exports = (config, { strapi }) => {
     errorMessage:
       "Demasiadas peticiones, por favor inténtalo de nuevo más tarde.",
     id: (ctx) => ctx.ip, // keying por IP
-    max: config.max || 100,
+    max: config.max || 1000,
     headers: {
       remaining: "Rate-Limit-Remaining",
       reset: "Rate-Limit-Reset",
